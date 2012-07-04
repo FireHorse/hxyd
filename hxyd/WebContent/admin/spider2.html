@@ -1,0 +1,152 @@
+<html>
+<head>
+<title>Complex Layout</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../extjs/resources/css/ext-all.css" />
+<script type="text/javascript" src="js/north.js"></script>
+<script type="text/javascript" src="js/south.js"></script>
+<script type="text/javascript" src="js/east.js"></script>
+    <!-- GC -->
+
+<style type="text/css">
+p {
+    margin:5px;
+}
+.settings {
+    background-image:url(../shared/icons/fam/folder_wrench.png);
+}
+.nav {
+    background-image:url(../shared/icons/fam/folder_go.png);
+}
+.info {
+    background-image:url(../shared/icons/fam/information.png);
+}
+</style>
+<script type="text/javascript" src="../extjs/ext-all.js"></script>
+<script type="text/javascript">
+    Ext.require(['*']);
+
+    Ext.onReady(function() {
+
+        Ext.QuickTips.init();
+        var mytabs;
+        // NOTE: This is an example showing simple state management. During development,
+        // it is generally best to disable state management as dynamically-generated ids
+        // can change across page loads, leading to unpredictable results.  The developer
+        // should ensure that stable state ids are set for stateful components in real apps.
+        Ext.state.Manager.setProvider(Ext.create('Ext.state.CookieProvider'));
+
+        var viewport = Ext.create('Ext.Viewport', {
+            id: 'border-example',
+            layout: 'border',
+            items: [
+           initNorth(),initSouth(), {
+                xtype: 'tabpanel',
+                region: 'east',
+                title: '系统监控',
+                animCollapse: true,
+                collapsible: true,
+                split: true,
+                width: 225, // give east and west regions a width
+                minSize: 175,
+                maxSize: 400,
+                margins: '0 5 0 0',
+                activeTab: 1,
+                tabPosition: 'bottom',
+                items: [{
+                    html: '<p>A TabPanel component can be a region.</p>',
+                    title: 'A Tab',
+                    autoScroll: true
+                }, ]
+            }, {
+                region: 'west',
+                stateId: 'navigation-panel',
+                id: 'west-panel', // see Ext.getCmp() below
+                title: '功能导航',
+                split: true,
+                width: 200,
+                minWidth: 175,
+                maxWidth: 400,
+                collapsible: true,
+                animCollapse: true,
+                margins: '0 0 0 5',
+                layout: 'accordion',
+                items: [{
+                    contentEl: 'west',
+                    title: 'Spider',
+                    iconCls: 'nav' // see the HEAD section for style used
+                }, {
+                    title: 'Settings',
+                    html: '<p>Some settings in here.</p>',
+                    iconCls: 'settings'
+                }, {
+                    title: 'Information',
+                    html: '<p>Some info in here.</p>',
+                    iconCls: 'info'
+                }]
+            },
+            // in this instance the TabPanel is not wrapped by another panel
+            // since no title is needed, this Panel is added directly
+            // as a Container
+            mytabs=Ext.createWidget('tabpanel', {
+                
+                region: 'center', // a center region is ALWAYS required for border layout
+                defaults: {
+                    autoScroll: true,
+                    bodyPadding: 10
+                },
+                activeTab: 0,     // first tab initially active
+                items: [ {
+                    id:'sysInfo',
+                    contentEl: 'center2',
+                    title: '起始页',                  
+                    autoScroll: true
+                },]
+            
+            })]
+        });
+        var index=0;
+         function addTab (id,title,url) {
+              mytabs.add({
+                    id:id+""+index++,
+                    closable: true,
+                    autoScroll: true,
+                    html: 'Tab Body '+ '<br/><br/>',
+                    iconCls: 'tabs',
+                    title: title
+               }).show().Layout();   
+         }
+        
+        // get a reference to the HTML element with id "hideit" and add a click listener to it
+        Ext.get("buildTask").on('click', function(){
+            // get a reference to the Panel that was created with id = 'west-panel'
+              addTab("buildTask-tab","添加任务");
+        });
+         Ext.get("buildTask1").on('click', function(){
+            // get a reference to the Panel that was created with id = 'west-panel'
+            var w = Ext.getCmp('west-panel');
+            // expand or collapse that Panel based on its collapsed property state
+            w.collapsed ? w.expand() : w.collapse();
+        });
+    });
+    </script>
+</head>
+<body>
+    <!-- use class="x-hide-display" to prevent a brief flicker of the content -->
+    <div id="west" class="x-hide-display">
+        <p>Hi. I'm the west panel.</p>
+        <p><a href="#" id="buildTask">添加任务</a></p>
+    </div>
+    <div id="center2" class="x-hide-display">
+            test
+    </div>
+    <div id="center1" class="x-hide-display">
+       m primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse sit amet dui vitae lacus fermentum sodales. Donec varius dapibus nisl. Praesent at velit id risus convallis bibendum. Aliquam felis nibh, rutrum nec, blandit non, mattis sit amet, magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam varius dignissim nibh. Quisque id orci ac ante hendrerit molestie. Aliquam malesuada enim non neque.</p>
+    </div>
+    <div id="props-panel" class="x-hide-display" style="width:200px;height:200px;overflow:hidden;">
+    </div>
+    <div id="south" class="x-hide-display">
+      
+    </div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+body {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.main .front {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 36px;
+	text-align: center;
+	vertical-align: bottom;
+	background-color: #CCCCCC;
+	height: 100px;
+	width: 70%;
+	float: left;
+	border-bottom-width: medium;
+	border-bottom-style: solid;
+	border-bottom-color: #000000;
+	margin-right: 15%;
+	margin-left: 15%;
+	margin-top: 20px;
+}
+.main .floot {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	background-color: #CCCCCC;
+	background-position: center;
+	text-align: center;
+	vertical-align: text-top;
+	float: left;
+	height: 60px;
+	width: 70%;
+	margin-right: 15%;
+	margin-bottom: 40px;
+	margin-left: 15%;
+}
+.main .center {
+	float: left;
+	height: auto;
+	width: 100%;
+}
+.main .front .front_left {
+	float: left;
+	height: 100px;
+	width: 20%;
+}
+.main .front .front_right {
+	float: left;
+	height: 100px;
+	width: 80%;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 36px;
+	background-position: center bottom;
+}
+.main .center {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	width: 70%;
+	margin-right: 15%;
+	margin-left: 15%;
+	border-right-width: medium;
+	border-left-width: medium;
+	border-right-style: double;
+	border-left-style: double;
+	border-right-color: #999999;
+	border-left-color: #999999;
+}

@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+.westmenu {
+	height: 30px;
+	padding: 5px;
+	padding-left: 35px;
+	border: 1px dotted;
+	cursor: pointer;
+}
+
+.spiderviewport {
+	background-image: url('../image/ie4j.jpg');
+}
+
+#logo {
+	
+}
+
+#title {
+	width: 500px;
+	height: 50px;
+	padding-top:15px;
+	font-size:24px;
+	font-style: inherit;
+}
+
+#img {
+	width: 100px;
+	float: left;
+}

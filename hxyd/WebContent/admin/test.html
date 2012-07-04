@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../resources/js/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="../resources/js/ajax.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="../extjs/resources/css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="css/spider.css" />
+<script type="text/javascript" src="../extjs/ext-all.js"></script>
+<script type="text/javascript" src="js/eastchart.js"></script>
+<script type="text/javascript">
+Ext.require([ 'Ext.window.Window', 'Ext.chart.*' ]);
+Ext.onReady(function() {
+	var chartWindow = Ext.create('Ext.Window', {
+		width : 200,
+		height : 200,
+		maximizable : true,
+		title : 'Live Memory Info',
+		layout : 'fit',
+		items : [initChart()]
+	}).show();
+})
+</script>
+</head>
+<body>
+	<div id="data"></div>
+	<div id="data2"></div>
+	<div id="data3"></div>
+</body>
+</html>

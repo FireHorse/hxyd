@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>OSpider 管理界面</title>
+<link rel="stylesheet" type="text/css"
+	href="../extjs/resources/css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="css/spider.css" />
+<script type="text/javascript" src="../extjs/ext-all.js"></script>
+<script type="text/javascript" src="../resources/js/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="../resources/js/ajax.js"></script>
+<script type="text/javascript" src="js/west.js"></script>
+<script type="text/javascript" src="js/north.js"></script>
+<script type="text/javascript" src="js/south.js"></script>
+<script type="text/javascript" src="js/east.js"></script>
+<script type="text/javascript" src="js/west.js"></script>
+<script type="text/javascript" src="js/center.js"></script>
+<script type="text/javascript" src="js/viewport.js"></script>
+<script type="text/javascript" src="js/centertabs.js"></script>
+<script type="text/javascript">
+	Ext.require([ '*' ]);
+	Ext.onReady(function() {
+		Ext.state.Manager.setProvider(Ext.create('Ext.state.CookieProvider'));
+		var north = initNorth();
+		var south = initSouth();
+		var east = initEast();
+		var west = initWest();
+		var center = initCenter();
+		var viewport = initViewport([ north, south, east, west, center ]);
+		Ext.get("buildTask").on('click', function() {
+			addTab("buildTask-tab", "添加任务", center);
+		});
+		//setInterval(initEast, 1000);
+	});
+</script>
+</head>
+<body>
+	<div id="logo">
+		<div id="img">
+			<img src="../resources/images/LOGO.gif" height="50" border="0" />
+		</div>
+		<div id="title">聚焦网络爬虫管理系统</div>
+	</div>
+	<div id="west" class="x-hide-display">
+		<p>Hi. I'm the west panel.</p>
+		<div id="buildTask" class="westmenu">创建任务</div>
+	</div>
+	<div id="center2" class="x-hide-display">test</div>
+	<div id="center1" class="x-hide-display">
+		<p>center1</p>
+	</div>
+	<div id="props-panel" class="x-hide-display"
+		style="width: 200px; height: 200px; overflow: hidden;"></div>
+	<div id="eastdata"></div>
+	<div id="south" class="x-hide-display"></div>
+</body>
+</html>
